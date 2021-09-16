@@ -1,0 +1,139 @@
+.list,
+.cart{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    grid-gap: var(--grid-gap);
+    overflow: hidden;
+    
+    &__products{ overflow: hidden; }  
+    &__scroll{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        align-content: start;
+
+        position: relative;
+        overflow-y: auto;
+
+        height: 100%;
+        padding: 0 var(--gap-h);
+        background-color: $white;
+
+        @media (max-width: $mq-4) { padding: 0; }
+    }
+        &__product{
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-template-rows: auto auto;
+            align-content: start;
+            grid-column-gap: 5px;
+
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba($gray, .25);
+            animation: is-product-visible 500ms ease;
+
+            &-name{ 
+                overflow: hidden;
+                font-size: 0.889rem; 
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                text-transform: lowercase;
+            }
+            &-actions{
+                display: grid;
+                grid-template-columns: auto auto;
+                align-items: center;
+                grid-gap: 10px;
+            }
+                &-cart{
+                    position: relative;
+                    width: 40px;
+                    height: 20px;
+                    
+                    appearance: none;
+                    border-radius: 10px; 
+                    border: 1px solid $cta-2;
+                    cursor: pointer;
+
+                    // &:checked{ background-color: $cta-2; }
+
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        width: 16px;
+                        height: 16px;
+                        top: 50%;
+                        left: 2px;
+                        transform: translateY(-50%);
+
+                        border-radius: 50%;
+                        background-color: $cta-2;
+                        transition: $transition;
+                    }
+                    &:checked::before{ 
+                        left: calc(100% - 18px);
+                        background-color: $cta-2;
+                    }
+                    
+                }
+                &-delete{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 25px;
+                    height: 25px;
+                    
+                    border-radius: 50%;
+                    background-color: $black;
+                    color: $cta-2;
+                    cursor: pointer;
+                    transition: $transition;
+            
+                    &:hover{
+                        background-color: darken($black, 5);
+                        transition: $transition;
+                    }
+                }
+            &-quantity,
+            &-price,
+            &-total{ 
+                position: relative;
+                font-size: 0.79rem; 
+                color: $gray;
+            }
+            &-quantity{
+                &::after{
+                    content: 'x';
+                    margin: 0 5px;
+                }
+            }
+            &-price{
+                &::before{ content: '$';}
+                &::after{ 
+                    content: '=';
+                    margin: 0 5px;
+                }
+            }
+            &-total{
+                &::before{ content: '$'; }
+            }
+        }
+  
+    &__footer{
+        display: flex;
+        justify-content: space-between;
+        padding: calc(var(--gap-v)/2) var(--gap-h);
+        border-bottom: 2px solid $cta-2;
+
+        &-items,
+        &-total{
+            text-transform: capitalize;
+            font-size: 0.889rem;
+            font-weight: 600;
+            line-height: 1.7;
+            letter-spacing: .75px;
+            color: $black;
+        }
+    }
+}

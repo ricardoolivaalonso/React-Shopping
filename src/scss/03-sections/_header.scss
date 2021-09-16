@@ -1,0 +1,15 @@
+.header{
+    grid-area: header;
+
+    &__title{
+        font-size: 1.625rem;;
+        font-weight: 600;
+        letter-spacing: .5px;
+        color: $black;
+
+        span{
+            color: $cta-2;
+            font-weight: 600;
+        }
+    }
+}

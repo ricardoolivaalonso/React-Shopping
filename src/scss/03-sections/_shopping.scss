@@ -1,0 +1,31 @@
+.shopping{
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "form list cart"
+    ;
+    grid-template-columns: minmax(200px, 1fr) 1.6fr 1.6fr;
+    grid-template-rows: auto 1fr;
+    grid-gap: calc(var(--grid-gap)/2);
+    
+    width: 100%;
+    max-width: $max-width;
+    height: 100%;
+    margin: 0 auto;
+    padding: var(--gap-v) var(--gap-h);
+
+    background-color: $white;
+
+    @media (max-width: $mq-4) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas: 
+            "header"
+            "form"
+            "list"
+            "cart"
+        ;
+        grid-gap: calc(var(--grid-gap) * 2);
+        height: auto;
+    }
+}

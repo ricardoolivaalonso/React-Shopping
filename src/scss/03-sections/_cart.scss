@@ -1,0 +1,8 @@
+.cart{
+    grid-area: cart;
+
+    &__product-name{
+        text-decoration: line-through;
+        color: $gray;
+    }
+}
